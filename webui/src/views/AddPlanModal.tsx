@@ -495,7 +495,7 @@ const RetentionPolicyView = () => {
   } else if (mode === 1) {
     elem = (
       <Form.Item
-        name={["retention", "keepLastN"]}
+        name={["retention", "policyKeepLastN"]}
         initialValue={30}
         validateTrigger={["onChange", "onBlur"]}
         rules={[
@@ -513,7 +513,7 @@ const RetentionPolicyView = () => {
       <Row>
         <Col span={11}>
           <Form.Item
-            name={["retention", "keepYearly"]}
+            name={["retention", "policyTimeBucketed", "yearly"]}
             validateTrigger={["onChange", "onBlur"]}
             initialValue={0}
             required={false}
@@ -524,7 +524,7 @@ const RetentionPolicyView = () => {
             />
           </Form.Item>
           <Form.Item
-            name={["retention", "keepMonthly"]}
+            name={["retention", "policyTimeBucketed", "monthly"]}
             initialValue={3}
             validateTrigger={["onChange", "onBlur"]}
             required={false}
@@ -535,7 +535,7 @@ const RetentionPolicyView = () => {
             />
           </Form.Item>
           <Form.Item
-            name={["retention", "keepWeekly"]}
+            name={["retention", "policyTimeBucketed", "weekly"]}
             initialValue={4}
             validateTrigger={["onChange", "onBlur"]}
             required={false}
@@ -548,7 +548,7 @@ const RetentionPolicyView = () => {
         </Col>
         <Col span={11} offset={1}>
           <Form.Item
-            name={["retention", "keepDaily"]}
+            name={["retention", "policyTimeBucketed", "daily"]}
             initialValue={7}
             validateTrigger={["onChange", "onBlur"]}
             required={false}
@@ -559,7 +559,7 @@ const RetentionPolicyView = () => {
             />
           </Form.Item>
           <Form.Item
-            name={["retention", "keepHourly"]}
+            name={["retention", "policyTimeBucketed", "hourly"]}
             initialValue={24}
             validateTrigger={["onChange", "onBlur"]}
             required={false}
@@ -579,7 +579,6 @@ const RetentionPolicyView = () => {
       <Form.Item label="Retention Policy">
         <Row>
           <Radio.Group value={mode} onChange={e => {
-            console.log("SELECTED: ", e.target);
             const selected = e.target.value;
             if (selected === 1) {
               form.setFieldValue("retention", { keepLastN: 30 });
